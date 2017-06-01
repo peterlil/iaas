@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "t0nwName": {"type": "string"},
+    "t0nwPrefix": { "type": "string" },
+    "t0nwSubnet1Name": { "type": "string" },
+    "t0nwSubnet2Name": { "type": "string" },
+    "t0nwSubnet1Prefix": { "type": "string" },
+    "t0nwSubnet2Prefix": { "type": "string" }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "name": "[parameters('t0nwName')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2016-03-30",
+      "dependsOn": [ ],
+      "tags": {
+        "displayName": "[parameters('t0nwName')]"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('t0nwPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('t0nwSubnet1Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('t0nwSubnet1Prefix')]"
+            }
+          },
+          {
+            "name": "[parameters('t0nwSubnet2Name')]",
+            "properties": {
+              "addressPrefix": "[parameters('t0nwSubnet2Prefix')]"
+            }
+          }
+        ]
+      }
+    }],
+  "outputs": {}
+}

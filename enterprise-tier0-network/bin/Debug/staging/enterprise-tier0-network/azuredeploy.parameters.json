@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "t0nwName": {"value": "Tier0Vnet"},
+    "t0nwPrefix": { "value": "10.0.0.0/16" },
+    "t0nwSubnet1Name": { "value": "GatewaySubnet" },
+    "t0nwSubnet2Name": { "value": "Tier0Ring0" },
+    "t0nwSubnet1Prefix": { "value": "10.0.0.0/24" },
+    "t0nwSubnet2Prefix": { "value": "10.0.1.0/24" }
+  }
+}

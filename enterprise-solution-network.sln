@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "enterprise-solution-network", "enterprise-solution-network\enterprise-solution-network.deployproj", "{0D7ED14C-81AD-4171-ADA4-BFC34BF89AC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D7ED14C-81AD-4171-ADA4-BFC34BF89AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7ED14C-81AD-4171-ADA4-BFC34BF89AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7ED14C-81AD-4171-ADA4-BFC34BF89AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7ED14C-81AD-4171-ADA4-BFC34BF89AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
