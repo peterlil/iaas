@@ -1,0 +1,11 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "peeringName": { "value": "LinkToTier0Nw" },
+    "srcVnetName": { "value": "SolutionVnet" },
+    "destVnetName": { "value": "Tier0Vnet" },
+    "destResourceGroupName": { "value": "enterprise-network-tier0" },
+    "allowGatewayTransit": {"value": false}
+  }
+}
