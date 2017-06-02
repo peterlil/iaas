@@ -2,11 +2,15 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "t0nwName": {"value": "Tier0Vnet"},
+    "t0nwName": { "value": "Tier0Vnet" },
     "t0nwPrefix": { "value": "10.0.0.0/16" },
     "t0nwSubnet1Name": { "value": "GatewaySubnet" },
     "t0nwSubnet2Name": { "value": "Tier0Ring0" },
     "t0nwSubnet1Prefix": { "value": "10.0.0.0/24" },
-    "t0nwSubnet2Prefix": { "value": "10.0.1.0/24" }
+    "t0nwSubnet2Prefix": { "value": "10.0.1.0/24" },
+
+    "keyVaultName": { "value": "ent-t0-kv" },
+    "keyVaultSku": { "value": "Standard" },
+    "keyVaultObjectIdOfUser": { "value": "a0b0de6f-94da-469f-b4eb-1cc25c8984cf" }
   }
 }

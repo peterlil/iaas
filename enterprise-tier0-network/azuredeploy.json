@@ -7,9 +7,22 @@
     "t0nwSubnet1Name": { "type": "string" },
     "t0nwSubnet2Name": { "type": "string" },
     "t0nwSubnet1Prefix": { "type": "string" },
-    "t0nwSubnet2Prefix": { "type": "string" }
+    "t0nwSubnet2Prefix": { "type": "string" },
+    "_artifactsLocation": {
+      "type": "string"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring"
+    },
+
+    "keyVaultName": { "type": "string" },
+    "keyVaultSku": { "type": "string" },
+    "keyVaultObjectIdOfUser": {"type": "string"}
   },
-  "variables": {},
+  "variables": {
+    "KeyVaultTemplateFolder": "nestedtemplates",
+    "KeyVaultTemplateFileName": "KeyVault.json",
+    "KeyVaultTemplateParametersFileName": "KeyVault.parameters.json"},
   "resources": [
     {
       "name": "[parameters('t0nwName')]",
@@ -40,6 +53,24 @@
             }
           }
         ]
+      }
+    },
+    {
+      "name": "KeyVault",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2016-09-01",
+      "dependsOn": [ ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('_artifactsLocation'), '/', variables('KeyVaultTemplateFolder'), '/', variables('KeyVaultTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "name": { "value": "[parameters('keyVaultName')]" },
+          "sku": { "value": "[parameters('keyVaultSku')]" },
+          "objectIdOfUser": {"value": "[parameters('keyVaultObjectIdOfUser')]"}
+        }
       }
     }],
   "outputs": {}
