@@ -4,7 +4,7 @@
   "parameters": {
     "publicDnsPrefix": { "value": "ev-dc-100" },
     "vmName": { "value": "evdc1" },
-    "privateIpAddress": { "value": "10.0.0.10" },
+    "privateIpAddress": { "value": "10.0.1.10" },
     "vnetName": { "value": "Tier0Vnet" },
     "subnetName": { "value": "Tier0Ring0" },
     "adminUserName": { "value": "peterlil" },

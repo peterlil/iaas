@@ -51,7 +51,9 @@ if ($UploadArtifacts) {
     if (Test-Path $DSCSourceFolder) {
         $DSCSourceFilePaths = @(Get-ChildItem $DSCSourceFolder -File -Filter '*.ps1' | ForEach-Object -Process {$_.FullName})
         foreach ($DSCSourceFilePath in $DSCSourceFilePaths) {
+            Write-Host "DSCSourceFilePath: $($DSCSourceFilePath)"
             $DSCArchiveFilePath = $DSCSourceFilePath.Substring(0, $DSCSourceFilePath.Length - 4) + '.zip'
+            Write-Host "DSCArchiveFilePath: $($DSCArchiveFilePath)"
             Publish-AzureRmVMDscConfiguration $DSCSourceFilePath -OutputArchivePath $DSCArchiveFilePath -Force -Verbose
         }
     }
@@ -111,10 +113,13 @@ else {
                                        -ResourceGroupName $ResourceGroupName `
                                        -TemplateFile $TemplateFile `
                                        -TemplateParameterFile $TemplateParametersFile `
-                                       @OptionalParameters `
+                                        @OptionalParameters `
                                        -Force -Verbose `
-                                       -ErrorVariable ErrorMessages
+                                       -ErrorVariable ErrorMessages 
     if ($ErrorMessages) {
         Write-Output '', 'Template deployment returned the following errors:', @(@($ErrorMessages) | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") })
     }
 }
+
+
+                                      

@@ -33,7 +33,6 @@
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <None Include="DSC\CreateADPDC.ps1" />
     <None Include="DSC\CreateADPDC.zip" />
-    <None Include="nestedtemplates\vnet-with-dns-server.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

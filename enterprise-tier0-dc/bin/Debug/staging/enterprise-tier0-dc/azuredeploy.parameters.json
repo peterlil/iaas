@@ -16,6 +16,19 @@
     },
     "aadClientSecret": {
       "value": "UHuSrw!jKo7VniFaT%50%JfuF%2!82WjSU8UVjeJsRZ=K9+1aRy"
+    },
+    "t0nwPrefix": { "value": ["10.0.0.0/16"] },
+    "t0nwSubnet1Name": { "value": "GatewaySubnet" },
+    "t0nwSubnet2Name": { "value": "Tier0Ring0" },
+    "t0nwSubnet1Prefix": { "value": "10.0.0.0/24" },
+    "t0nwSubnet2Prefix": { "value": "10.0.1.0/24" },
+    "virtualNetworkName": {
+      "value": "Tier0Vnet"
+    },
+    "DNSServerAddress": {
+      "value": [
+        "10.0.0.10"
+      ]
     }
   }
 }

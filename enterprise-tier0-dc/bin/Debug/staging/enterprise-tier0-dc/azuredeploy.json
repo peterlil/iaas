@@ -32,7 +32,12 @@
     "aadClientID": { "type": "string" },
     "aadClientSecret": { "type": "string" },
     "keyVaultName": { "type": "string" },
-    "keyVaultResourceGroup": { "type": "string" }
+    "keyVaultResourceGroup": { "type": "string" },
+    "t0nwPrefix": { "type": "array" },
+    "t0nwSubnet1Name": { "type": "string" },
+    "t0nwSubnet2Name": { "type": "string" },
+    "t0nwSubnet1Prefix": { "type": "string" },
+    "t0nwSubnet2Prefix": { "type": "string" }
   },
   "variables": {
     "nicName": "[concat(parameters('vmName'), 'Nic')]",
@@ -175,6 +180,31 @@
           "DNSServerAddress": {
             "value": [
               "[parameters('privateIpAddress')]"
+            ]
+          },
+          "t0nwPrefix": {
+            "value": [
+              "[parameters('t0nwPrefix')]"
+            ]
+          },
+          "t0nwSubnet1Name": {
+            "value": [
+              "[parameters('t0nwSubnet1Name')]"
+            ]
+          },
+          "t0nwSubnet2Name": {
+            "value": [
+              "[parameters('t0nwSubnet2Name')]"
+            ]
+          },
+          "t0nwSubnet1Prefix": {
+            "value": [
+              "[parameters('t0nwSubnet1Prefix')]"
+            ]
+          },
+          "t0nwSubnet2Prefix": {
+            "value": [
+              "[parameters('t0nwSubnet2Prefix')]"
             ]
           }
         }

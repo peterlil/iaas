@@ -68,7 +68,11 @@
               "privateIPAddress": "[parameters('privateIpAddress')]",
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetName'))]"
-              }
+              },
+							"publicIPAddress": {
+								"id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+							}
+
             }
           }
         ]
@@ -77,7 +81,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2016-04-30-preview",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
@@ -101,7 +105,10 @@
           "osDisk": {
             "name": "[concat(parameters('vmName'), '-os-disk')]",
             "caching": "ReadWrite",
-            "createOption": "FromImage"
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "Standard_LRS"
+            }
           },
           "dataDisks": [
             {
@@ -109,7 +116,10 @@
               "caching": "None",
               "createOption": "Empty",
               "diskSizeGB": "1000",
-              "lun": 0
+              "lun": 0,
+              "managedDisk": {
+                "storageAccountType": "Standard_LRS"
+              }
             }
           ]
         },
@@ -154,31 +164,6 @@
           }
         }
       ]
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "name": "UpdateVNetDNS",
-      "apiVersion": "2016-02-01",
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('vmName'), 'CreateADForest')]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/vnet-with-dns-server.json', parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "virtualNetworkName": {
-            "value": "[parameters('vnetName')]"
-          },
-          "DNSServerAddress": {
-            "value": [
-              "[parameters('privateIpAddress')]"
-            ]
-          }
-        }
-      }
     },
     {
       "name": "UpdateEncryptionSettings",
