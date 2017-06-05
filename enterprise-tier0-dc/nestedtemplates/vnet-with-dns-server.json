@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Virtual Network"
+      }
+    },
+    "DNSServerAddress": {
+      "type": "array",
+      "metadata": {
+        "description": "The DNS address(es) of the DNS Server(s) used by the VNET"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('virtualNetworkName')]",
+      "apiVersion": "2016-03-30",
+      "location": "[resourceGroup().location]",
+      "dhcpOptions": {
+        "dnsServers": "[parameters('DNSServerAddress')]"
+      }
+    }
+  ]
+}
